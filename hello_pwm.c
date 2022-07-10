@@ -1,9 +1,8 @@
-// Output PWM signals on pins 0 and 1
-
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 
-int main() {
+int main()
+{
 	// Tell the LED pin that the PWM is in charge of its value.
 	gpio_set_function(PICO_DEFAULT_LED_PIN, GPIO_FUNC_PWM);
 	// Figure out which slice we just connected to the LED pin
