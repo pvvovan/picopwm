@@ -7,9 +7,9 @@ project(pico_blink C CXX)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-pico_sdk_init()
+add_compile_options(-Wall -Wextra)
 
-# include(example_auto_set_url.cmake)
+pico_sdk_init()
 
 add_executable(pico_pwm
 	hello_pwm.cpp

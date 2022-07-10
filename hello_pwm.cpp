@@ -18,8 +18,10 @@ int main()
 
 	::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 255 * 3);
 
-	// we can twiddle our thumbs
 	while (true) {
-		::tight_loop_contents();
+		::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 255 * 3);
+		sleep_ms(500);
+		::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 0);
+		sleep_ms(500);
 	}
 }
