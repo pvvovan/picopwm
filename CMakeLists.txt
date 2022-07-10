@@ -11,15 +11,12 @@ pico_sdk_init()
 
 # include(example_auto_set_url.cmake)
 
-add_executable(blink
-	blink.c
+add_executable(pico_pwd
+	hello_pwm.c
 )
 
 # pull in common dependencies
-target_link_libraries(blink pico_stdlib)
+target_link_libraries(pico_pwd pico_stdlib hardware_pwm)
 
 # create map/bin/hex file etc.
-pico_add_extra_outputs(blink)
-
-# add url via pico_set_program_url
-# example_auto_set_url(blink)
+pico_add_extra_outputs(pico_pwd)
