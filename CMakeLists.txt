@@ -11,12 +11,12 @@ pico_sdk_init()
 
 # include(example_auto_set_url.cmake)
 
-add_executable(pico_pwd
-	hello_pwm.c
+add_executable(pico_pwm
+	hello_pwm.cpp
 )
 
 # pull in common dependencies
-target_link_libraries(pico_pwd pico_stdlib hardware_pwm)
+target_link_libraries(pico_pwm pico_stdlib hardware_pwm)
 
 # create map/bin/hex file etc.
-pico_add_extra_outputs(pico_pwd)
+pico_add_extra_outputs(pico_pwm)
