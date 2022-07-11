@@ -1,3 +1,10 @@
 [submodule "pico-sdk"]
 	path = pico-sdk
 	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "openocd"]
+	path = openocd
+	url = https://github.com/raspberrypi/openocd.git
+	branch = rp2040
+[submodule "picoprobe"]
+	path = picoprobe
+	url = https://github.com/raspberrypi/picoprobe.git
