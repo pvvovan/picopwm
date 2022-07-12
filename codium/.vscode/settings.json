@@ -4,13 +4,13 @@
 	// a Pico binary on the host
 	"cmake.statusbar.advanced": {
 	    "debug": {
-		"visibility": "hidden"
+		"visibility": "default"
 	    },
 	    "launch": {
 		"visibility": "hidden"
 	    },
 	    "build": {
-		"visibility": "hidden"
+		"visibility": "default"
 	    },
 	    "buildTarget": {
 		"visibility": "hidden"

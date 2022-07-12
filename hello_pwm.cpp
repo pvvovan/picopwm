@@ -16,10 +16,8 @@ int main()
 	// Load the configuration into our PWM slice, and set it running.
 	::pwm_init(slice_num, &config, true);
 
-	::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 255 * 3);
-
 	while (true) {
-		::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 255 * 3);
+		::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 255 * 10);
 		sleep_ms(500);
 		::pwm_set_gpio_level(PICO_DEFAULT_LED_PIN, 0);
 		sleep_ms(500);
