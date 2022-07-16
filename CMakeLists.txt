@@ -20,14 +20,20 @@ pico_sdk_init()
 
 add_executable(hey_pwm
 	hello_pwm.cpp
+	dhcpserver.c
+)
+
+target_include_directories(hey_pwm PRIVATE
+	${CMAKE_CURRENT_LIST_DIR}
 )
 
 # pull in common dependencies
 target_link_libraries(hey_pwm
 	pico_stdlib
 	hardware_pwm
-	pico_cyw43_arch_none
+	pico_cyw43_arch_lwip_poll
 )
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(hey_pwm)
+
