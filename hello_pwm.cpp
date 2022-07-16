@@ -1,11 +1,17 @@
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
+#include "pico/cyw43_arch.h"
 
 // #define BLINK_PIN	PICO_DEFAULT_LED_PIN
 #define BLINK_PIN	15
 
 int main()
 {
+	if (cyw43_arch_init()) {
+		printf("WiFi init failed");
+		return -1;
+	}
+
 	// Tell the LED pin that the PWM is in charge of its value.
 	::gpio_set_function(BLINK_PIN, GPIO_FUNC_PWM);
 	// Figure out which slice we just connected to the LED pin
@@ -21,8 +27,10 @@ int main()
 
 	while (true) {
 		::pwm_set_gpio_level(BLINK_PIN, 255 * 5);
+		cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
 		sleep_ms(500);
 		::pwm_set_gpio_level(BLINK_PIN, 0);
+		cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
 		sleep_ms(500);
 	}
 }

@@ -4,7 +4,7 @@
 	    {
 		"name": "PicoDebug",
 		"cwd": "${workspaceRoot}/openocd/tcl",
-		"executable": "${workspaceRoot}/build/pico_pwm.elf",
+		"executable": "${workspaceRoot}/build/hey_pwm.elf",
 		"request": "launch",
 		"type": "cortex-debug",
 		"servertype": "openocd",
