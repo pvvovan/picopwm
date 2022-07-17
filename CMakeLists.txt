@@ -20,7 +20,6 @@ pico_sdk_init()
 
 add_executable(hey_pwm
 	hello_pwm.cpp
-	dhcpserver.c
 )
 
 target_include_directories(hey_pwm PRIVATE
