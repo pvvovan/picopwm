@@ -6,14 +6,14 @@
 
 
 // #define BLINK_PIN	PICO_DEFAULT_LED_PIN
-#define BLINK_PIN	15
-#define UDP_SERVER_PORT	8035
+#define BLINK_PIN	15u
+#define UDP_SERVER_PORT	8035u
 #define SSID		"wifi"
 #define PASSWORD	"password"
 
 typedef unsigned char cmd_t;
-#define CMD_DELIM (4)
-#define CMD_MOVE  ((cmd_t)((1 << CMD_DELIM) - 1))
+#define CMD_DELIM (4u)
+#define CMD_MOVE  ((cmd_t)((1u << CMD_DELIM) - 1u))
 #define CMD_SPEED ((cmd_t)(~CMD_MOVE))
 
 enum class move_t { FORWARD, BACKWARD, LEFT, RIGHT, STOP, FAST_RIGHT, FAST_LEFT };
@@ -65,9 +65,10 @@ void udp_receive_callback(
 			static bool led_on = false;
 			led_on = !led_on;
 			cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, led_on);
+		} else {
+			cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
 		}
 	}
-
 	pbuf_free(p);
 }
 
@@ -107,20 +108,16 @@ int main()
 
 	while (true) {
 		static absolute_time_t led_time;
-		static bool led_on = true;
-
 		if (absolute_time_diff_us(get_absolute_time(), led_time) < 0) {
+			static bool led_on = true;
 			led_on = !led_on;
 			if (led_on) {
 				::pwm_set_gpio_level(BLINK_PIN, 255 * 5);
-				// cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
 			} else {
 				::pwm_set_gpio_level(BLINK_PIN, 0);
-				// cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
 			}
 			led_time = make_timeout_time_ms(500);
 		}
-
 		cyw43_arch_poll();
 		sleep_ms(1);
 	}
